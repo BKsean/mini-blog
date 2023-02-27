@@ -1,8 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route} from "react-router-dom";
+import MainPage from "./component/page/MainPage";
+import PostWritePage from "./component/page/PostWritePage";
+import PostViewPage from "./component/page/PostViewPage";
+import styled from "styled-components";
+import {Routes} from "react-router";
+const MainTitleText = styled.p`
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+`;
 
-function App() {
+
+function App(props) {
   return (
+    <BrowserRouter>
+      <MainTitleText>승관의 미니 블로그</MainTitleText>
+      <Routes>
+        <Route index element={<MainPage/>}/>
+        <Route path="post-write" element={<PostWritePage/>}/>
+        <Route path="post/:postId" element={<PostViewPage/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
+/*  return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +41,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;
